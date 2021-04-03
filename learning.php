@@ -38,11 +38,6 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
-define('PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('PLUGIN_URL', plugin_dir_url(__FILE__));
-define('PLUGIN', plugin_basename(__FILE__));
-// echo '<pre>'.print_r(PLUGIN,1).'</pre>';die;
-
 use Inc\Base\Activate;
 use Inc\Base\Deactivate;
 
@@ -62,81 +57,3 @@ register_deactivation_hook(__FILE__, 'deactivate_learning_plugin');
 if (class_exists('Inc\\Init')) {
     Inc\Init::register_services();
 }
-
-// use Inc\Activate;
-// use Inc\Deactivate;
-// // use Inc\Admin\AdminPages;
-
-// if (!class_exists('Learning')) {
-//     class Learning
-//     {
-//         public $plugin;
-
-//         public function __construct()
-//         {
-//             $this->plugin = plugin_basename(__FILE__);
-//         }
-
-//         public function register()
-//         {
-//             add_action('admin_enqueue_scripts', [$this, 'enqueue']);
-//             add_action('admin_menu', [$this, 'add_admin_menu']);
-//             add_filter("plugin_action_links_$this->plugin", [$this, 'setting_link']);
-//         }
-
-//         public function setting_link($links)
-//         {
-//             $setting_link = '<a href="admin.php?page=plugin_learning">Settings</a>';
-//             array_push($links, $setting_link);
-//             return $links;
-//         }
-
-//         public function add_admin_menu()
-//         {
-//             add_menu_page('Learning Plugin', 'Learning', 'manage_options', 'plugin_learning', [$this, 'admin_index'], 'dashicons-store', 110);
-//         }
-
-//         public function admin_index()
-//         {
-//             require_once plugin_dir_path(__FILE__) . 'templates/admin.php';
-//         }
-
-//         public function create_post_type()
-//         {
-//             add_action('init', [$this, 'custom_post_type']);
-//         }
-
-//         public function custom_post_type()
-//         {
-//             register_post_type('book', ['public' => true, 'label' => 'Books']);
-//         }
-
-//         public function enqueue()
-//         {
-//             wp_enqueue_style('styles', plugins_url('/assets/css/styles.css', __FILE__));
-//             wp_enqueue_script('main', plugins_url('/assets/js/main.js', __FILE__));
-//         }
-
-//         public function activate()
-//         {
-//             Activate::activate();
-//         }
-
-//         public function deactivate()
-//         {
-//             Deactivate::deactivate();
-//         }
-//     }
-
-//     $learning = new Learning();
-//     $learning->register();
-//     // echo '<pre>' . print_r(Activate::activate(), 1) . '</pre>';
-//     // die;
-//     // $learning->create_post_type();
-
-//     // require_once plugin_dir_path(__FILE__) . 'inc/Activate.php';
-//     // require_once plugin_dir_path(__FILE__) . 'inc/Deactivate.php';
-
-//     register_activation_hook(__FILE__, [$learning, 'activate']);
-//     register_deactivation_hook(__FILE__, [$learning, 'deactivate']);
-// }

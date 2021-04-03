@@ -2,14 +2,8 @@
 
 namespace Inc\Base;
 
-class SettingLinks
+class SettingLinks extends BaseController
 {
-    protected $plugin;
-
-    public function __construct()
-    {
-        $this->plugin = PLUGIN;
-    }
 
     public function register()
     {
