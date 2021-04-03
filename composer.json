@@ -1,0 +1,17 @@
+{
+    "name": "adk/learning",
+    "description": "Awesome starter plugin example",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "surajidk",
+            "email": "surajidk12@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"},
+    }
+}
