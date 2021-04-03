@@ -41,19 +41,27 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
 use Inc\Base\Activate;
 use Inc\Base\Deactivate;
 
+/**
+ * The code that runs during plugin activation
+ */
 function activate_learning_plugin()
 {
     Activate::activate();
 }
+register_activation_hook(__FILE__, 'activate_learning_plugin');
 
+/**
+ * The code that runs during plugin deactivation
+ */
 function deactivate_learning_plugin()
 {
     Deactivate::deactivate();
 }
-
-register_activation_hook(__FILE__, 'activate_learning_plugin');
 register_deactivation_hook(__FILE__, 'deactivate_learning_plugin');
 
+/**
+ * Initialize all the core classes of the plugin
+ */
 if (class_exists('Inc\\Init')) {
     Inc\Init::register_services();
 }
