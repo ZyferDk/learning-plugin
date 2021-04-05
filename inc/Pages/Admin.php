@@ -131,7 +131,7 @@ class Admin extends BaseController
 				'page' => 'learning_plugin',
 				'section' => 'learning_admin_index',
 				'args' => [
-					'label_for' => 'cpt',
+					'label_for' => $key,
 					'class' => 'ui-toggle',
 				],
 
