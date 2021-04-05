@@ -123,8 +123,8 @@ class Admin extends BaseController
 
 		$args = [];
 
-		foreach ($this->managers as $key => $value) {
-			$args[] = 			[
+		foreach ($this->managers as $key => $value) :
+			$args[] = [
 				'id' => $key,
 				'title' => $value,
 				'callback' => [$this->manager_callbacks, 'checkboxField'],
@@ -136,7 +136,7 @@ class Admin extends BaseController
 				],
 
 			];
-		}
+		endforeach;
 
 		$this->settings->setFields($args);
 	}
