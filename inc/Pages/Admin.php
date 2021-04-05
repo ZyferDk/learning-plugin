@@ -92,55 +92,14 @@ class Admin extends BaseController
 
 	public function setSettings()
 	{
-		$args = [
-			[
+		$args = [];
+		foreach ($this->managers as $key => $manager) {
+			$args[] =			[
 				'option_group' => 'learning_options_group',
-				'option_name' => 'cpt',
+				'option_name' => $key,
 				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'taxonomy',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'media_widgets',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'gallery',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'testimonial',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'templates',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'login',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'membership',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-			[
-				'option_group' => 'learning_options_group',
-				'option_name' => 'chat',
-				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			],
-
-
-		];
+			];
+		}
 
 		$this->settings->setSettings($args);
 	}
@@ -162,10 +121,12 @@ class Admin extends BaseController
 	public function setFields()
 	{
 
-		$args = [
-			[
-				'id' => 'cpt',
-				'title' => 'Activate CPT Manager',
+		$args = [];
+
+		foreach ($this->managers as $key => $value) {
+			$args[] = 			[
+				'id' => $key,
+				'title' => $value,
 				'callback' => [$this->manager_callbacks, 'checkboxField'],
 				'page' => 'learning_plugin',
 				'section' => 'learning_admin_index',
@@ -174,104 +135,8 @@ class Admin extends BaseController
 					'class' => 'ui-toggle',
 				],
 
-			],
-			[
-				'id' => 'taxonomy',
-				'title' => 'Activate Taxonomy Manager',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'taxonomy',
-					'class' => 'ui-toggle',
-				],
-
-			],
-			[
-				'id' => 'media_widgets',
-				'title' => 'Activate Media Widget',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'media_widgets',
-					'class' => 'ui-toggle',
-				],
-
-			],
-			[
-				'id' => 'gallery',
-				'title' => 'Activate Gallery Manager',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'gallery',
-					'class' => 'ui-toggle',
-				],
-
-			],
-			[
-				'id' => 'testimonial',
-				'title' => 'Activate Testimonial Manager',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'testimonial',
-					'class' => 'ui-toggle',
-				],
-
-			],
-			[
-				'id' => 'templates',
-				'title' => 'Activate Templates Manager',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'templates',
-					'class' => 'ui-toggle',
-				],
-
-			],
-			[
-				'id' => 'login',
-				'title' => 'Activate Ajax Login/Signup',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'login',
-					'class' => 'ui-toggle',
-				],
-
-			],
-			[
-				'id' => 'membership',
-				'title' => 'Activate Membership Manager',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'membership',
-					'class' => 'ui-toggle',
-				],
-
-			],
-			[
-				'id' => 'chat',
-				'title' => 'Activate Chat Manager',
-				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
-				'section' => 'learning_admin_index',
-				'args' => [
-					'label_for' => 'chat',
-					'class' => 'ui-toggle',
-				],
-
-			]
-		];
+			];
+		}
 
 		$this->settings->setFields($args);
 	}
