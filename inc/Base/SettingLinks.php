@@ -12,7 +12,7 @@ class SettingLinks extends BaseController
 
     public function setting_link($links)
     {
-        $setting_link = '<a href="admin.php?page=plugin_learning">Settings</a>';
+        $setting_link = '<a href="admin.php?page=learning_plugin">Settings</a>';
         array_push($links, $setting_link);
         return $links;
     }
