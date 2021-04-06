@@ -19,7 +19,7 @@
 			<form method="post" action="options.php">
 				<?php
 				settings_fields('learning_options_group');
-				do_settings_sections('learning_plugin');
+				do_settings_sections('data_learning_plugin');
 				submit_button();
 				?>
 			</form>

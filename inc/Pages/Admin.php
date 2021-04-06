@@ -92,14 +92,13 @@ class Admin extends BaseController
 
 	public function setSettings()
 	{
-		$args = [];
-		foreach ($this->managers as $key => $manager) {
-			$args[] =			[
+		$args = [
+			[
 				'option_group' => 'learning_options_group',
-				'option_name' => $key,
+				'option_name' => 'data_learning_plugin',
 				'callback' => [$this->manager_callbacks, 'checkboxSanitize']
-			];
-		}
+			]
+		];
 
 		$this->settings->setSettings($args);
 	}
@@ -109,10 +108,9 @@ class Admin extends BaseController
 		$args = [
 			[
 				'id' => 'learning_admin_index',
-				'title' => 'Settings',
+				'title' => 'Settings Manager',
 				'callback' => [$this->manager_callbacks, 'managerCallbacksOptionSection'],
-				// 'callback' => [$this->callbacks, 'learningAdminSection'],
-				'page' => 'learning_plugin',
+				'page' => 'data_learning_plugin',
 			]
 		];
 		$this->settings->setSections($args);
@@ -128,9 +126,10 @@ class Admin extends BaseController
 				'id' => $key,
 				'title' => $value,
 				'callback' => [$this->manager_callbacks, 'checkboxField'],
-				'page' => 'learning_plugin',
+				'page' => 'data_learning_plugin',
 				'section' => 'learning_admin_index',
 				'args' => [
+					'option_name' => 'data_learning_plugin',
 					'label_for' => $key,
 					'class' => 'ui-toggle',
 				],
