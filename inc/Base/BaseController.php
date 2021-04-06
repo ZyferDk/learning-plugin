@@ -32,4 +32,10 @@ class BaseController
             "chat" => "Activate Chat Manager",
         ];
     }
+
+    public function activated($key)
+    {
+        $option = get_option('data_learning_plugin');
+        return isset($option[$key]) ? $option[$key] : false;
+    }
 }

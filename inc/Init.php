@@ -6,15 +6,19 @@
 
 namespace Inc;
 
+use Inc\Base\Controller\CustomPostTypeController;
+use Inc\Base\Controller\CustomTaxonomyController;
+
 class Init
 {
     public static function get_services()
     {
         return [
-            Pages\Admin::class,
+            Pages\Dashboard::class,
             Base\Enqueue::class,
             Base\SettingLinks::class,
-
+            CustomPostTypeController::class,
+            CustomTaxonomyController::class,
         ];
     }
 

@@ -12,7 +12,7 @@ class ManagerCallbacks extends BaseController
         foreach ($this->managers as $key => $value) {
             $output[$key] = isset($input[$key]) ? true : false;
         }
-        
+
         return $output;
     }
 
