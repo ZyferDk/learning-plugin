@@ -13,9 +13,9 @@ class AdminCallbacks extends BaseController
     }
 
     // move folder to cto.php
-    public function cto()
+    public function ctp()
     {
-        return require_once("$this->plugin_path/templates/cto.php");
+        return require_once("$this->plugin_path/templates/ctp.php");
     }
 
     // move folder to taxonomy.php

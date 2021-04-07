@@ -17,8 +17,6 @@ class Dashboard extends BaseController
 
 	public $pages = [];
 
-	public $subpages = [];
-
 	public function register()
 	{
 
@@ -30,14 +28,11 @@ class Dashboard extends BaseController
 
 		$this->set_pages();
 
-		// $this->set_subpages();
-
 		$this->setSettings();
 		$this->setSections();
 		$this->setFields();
 
 		$this->settings->addPages($this->pages)->withSubPage('Dashboard')->register();
-		// $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
 	}
 
 	// set pages
@@ -57,39 +52,6 @@ class Dashboard extends BaseController
 		];
 	}
 	// end set pages
-
-	// set subpages
-	// public function set_subpages()
-	// {
-	// 	$this->subpages = [
-	// 		[
-	// 			'parent_slug' => 'learning_plugin',
-	// 			'page_title' => 'Custom Post Types',
-	// 			'menu_title' => 'CTO',
-	// 			'capability' => 'manage_options',
-	// 			'menu_slug' => 'learning_cto',
-	// 			'callback' => [$this->callbacks, 'cto'],
-	// 		],
-	// 		[
-	// 			'parent_slug' => 'learning_plugin',
-	// 			'page_title' => 'Custom Taxonomies',
-	// 			'menu_title' => 'Taxonomies',
-	// 			'capability' => 'manage_options',
-	// 			'menu_slug' => 'learning_taxonomies',
-	// 			'callback' => [$this->callbacks, 'taxonomy'],
-	// 		],			[
-	// 			'parent_slug' => 'learning_plugin',
-	// 			'page_title' => 'Custom Widgets',
-	// 			'menu_title' => 'Widgets',
-	// 			'capability' => 'manage_options',
-	// 			'menu_slug' => 'learning_widgets',
-	// 			'callback' => [$this->callbacks, 'widget'],
-	// 		],
-	// 	];
-	// }
-	// end set subpages
-
-
 
 	public function setSettings()
 	{

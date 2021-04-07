@@ -10,7 +10,8 @@ class BaseController
 
     public $plugin;
 
-    public $managers;
+    public $managers = [];
+
 
     public function __construct()
     {
@@ -33,7 +34,7 @@ class BaseController
         ];
     }
 
-    public function activated($key)
+    public function activated(string $key)
     {
         $option = get_option('data_learning_plugin');
         return isset($option[$key]) ? $option[$key] : false;
