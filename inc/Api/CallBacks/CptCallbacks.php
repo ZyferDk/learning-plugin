@@ -18,7 +18,6 @@ class CptCallbacks
 
         foreach ($learning_cpt as $value) {
             $output[$value] = isset($input[$value]) ? $input[$value] : false;
-            // $output[$value] = $input[$value];
         }
 
         return $output;
@@ -29,17 +28,15 @@ class CptCallbacks
         $name = $args['label_for'];
         $option_name = $args['option_name'];
         $input = get_option($option_name);
-        $value = '';
-        $value = $input[$name];
+        $value = isset($input[$name]) ? $input[$name] : null;
 
         echo '
-            <input type="text" id="' . $name . '" class="regular-text" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args["placeholder"] . '">
+            <input type="text" id="' . $name . '" class="regular-text" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args["placeholder"] . '" required>
         ';
     }
 
     public function checkboxField($args)
     {
-        echo '<pre>'.print_r($args,1).'</pre>';
         $name = $args['label_for'];
         $classes = $args['class'];
         $option_name = $args['option_name'];

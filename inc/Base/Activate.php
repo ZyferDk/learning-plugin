@@ -19,5 +19,6 @@ class Activate
 
         $default = [];
         update_option('data_learning_plugin', $default);
+        update_option('learning_plugin_cpt', $default);
     }
 }

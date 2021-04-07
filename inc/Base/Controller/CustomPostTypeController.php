@@ -164,11 +164,11 @@ class CustomPostTypeController extends BaseController
 
         $options = get_option('learning_plugin_cpt');
 
-        $post_type = $options['post_type'];
-        $plural_name = $options['plural_name'];
-        $singular_name = $options['singular_name'];
-        $public = $options['public'];
-        $has_archive = $options['has_archive'];
+        $post_type = isset($options['post_type']) ? $options['post_type'] : true;
+        $plural_name = isset($options['plural_name']) ? $options['plural_name'] : null;
+        $singular_name = isset($options['singular_name']) ? $options['singular_name'] : null;
+        $public = isset($options['public']) ? $options['public'] : null;
+        $has_archive = isset($options['has_archive']) ? $options['has_archive'] : null;
 
         $this->custom_post_types[] = [
             'post_type'             => $post_type,
@@ -206,7 +206,7 @@ class CustomPostTypeController extends BaseController
             'taxonomies'            => array('category', 'post_tag'),
             'hierarchical'          => false,
             'public'                => $public,
-            'show_ui'               => true,
+            'show_ui'               => $public,
             'show_in_menu'          => true,
             'menu_position'         => 5,
             'show_in_admin_bar'     => true,
